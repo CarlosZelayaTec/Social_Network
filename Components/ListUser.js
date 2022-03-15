@@ -1,15 +1,16 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
 import React from 'react'
 
-const ListUser = ({ usersName, imagesEnd }) => {
+const ListUser = ({ usersName, imagesEnd, navigation }) => {
 
-    // console.log(usersName);
-
+    const next = () => {
+        navigation.navigate('Profile');
+    }
 
   return (
     <View style={styles.contain}>
-        <TouchableOpacity style={styles.containerUser}>
-            <Image source={{uri: `${imagesEnd}`}} style={styles.profilePhoto} defaultSource={require('../assets/default.jpg')}/>
+        <TouchableOpacity style={styles.containerUser} onPress={next}>
+            <Image source={{uri: `${imagesEnd.url}`}} style={styles.profilePhoto} defaultSource={require('../assets/default.jpg')}/>
             <Text>{usersName}</Text>
         </TouchableOpacity>
     </View>
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 15,
         marginHorizontal: 5,
-        // backgroundColor: 'violet',
         width: Dimensions.get('screen').width - 198,
         height: Dimensions.get('screen').height - 650
     },

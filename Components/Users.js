@@ -2,26 +2,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import ListUser from './ListUser'
 
-const Users = ({ user, images }) => {
-
-    const [ imagesProfile, setImagesProfile ] = useState([]);
-
-
-    useEffect(() => {
-        images.map((item) => {
-            if(item.albumId === 1 && item.id === 1){
-                setImagesProfile(item.url);
-            }
-
-            if(item.albumId === 2 && item.id === 51){
-                setImagesProfile(item.url)
-            }
-        })
-    }, [])
-
-    
-
-    console.log(imagesProfile);
+const Users = ({ user, image, navigation }) => {
 
   return (
     <View style={styles.container}>
@@ -29,7 +10,7 @@ const Users = ({ user, images }) => {
         data={user}
         keyExtractor={x => x.id}
         numColumns={2}
-        renderItem={({item}) => <ListUser usersName={item.username} imagesEnd={imagesProfile} /> }
+        renderItem={({item}) => <ListUser usersName={item.username} imagesEnd={image} navigation={navigation} /> }
       />
     </View>
   )
