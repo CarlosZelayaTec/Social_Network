@@ -4,13 +4,15 @@ import ListUser from './ListUser'
 
 const Users = ({ user, image, navigation }) => {
 
+  // console.log(image);
+
   return (
     <View style={styles.container}>
       <FlatList 
         data={user}
         keyExtractor={x => x.id}
         numColumns={2}
-        renderItem={({item}) => <ListUser usersName={item.username} imagesEnd={image} navigation={navigation} /> }
+        renderItem={({item}) => <ListUser id={item.id} usersName={item.username} imagesEnd={image} navigation={navigation} /> }
       />
     </View>
   )

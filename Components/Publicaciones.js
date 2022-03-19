@@ -2,40 +2,61 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
-const Publicaciones = ({ post, user, image }) => {
+const Publicaciones = ({ post, nameUser, id, photos }) => {
 
     /**
      * * Esta es el componente de cada una de las publicaciones que haga un usuario
      * TODO Lo que nos faltaría hacer es que el botón de mostrar más texto funcione
      * ? Buscar que parte del código podemos refactorizar para mejorar el rendimiento
+     * 
+     * *Ya hemos agregado los usuarios, los post y hemos arreglado el estilo
+     * TODO Faltaría agregar las imagenes de cada uno de nuestros usuarios
+     * TODO Faltaría desarrollar una función que permita que veamos los post de todos los usuarios, ya que un usuario tiene varios Post
      */
+
+    // console.log(nameUser);
 
 
   return (
     <View style={styles.container} >
         <View style={styles.containerPublish} >
+        {/**
+            * *Aquí esta el Header, contiene: foto de perfil, nombre de usuario, boton de menú
+         */}
             <View style={styles.header} >
+
                 <Image style={styles.perfilPhoto} source={{uri: 'https://images.ecestaticos.com/XBt9G5umGpid8S2dgQk2G5jGUow=/119x0:2001x1412/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F848%2Ff70%2F0d5%2F848f700d5a15920f020496a616af873a.jpg'}} />
-                    <Text style={styles.userName} >Carlos Zelaya</Text>
-                    <TouchableOpacity onPress={() => alert('Falta hacer el menú')}>
-                        <Ionicons name='menu' size={32} />
-                    </TouchableOpacity>
+                    
+                    <Text style={styles.userName} >{nameUser}</Text>
+
+                        <TouchableOpacity onPress={() => alert('Falta hacer el menú')}>
+                            <Ionicons name='menu' size={32} />
+                        </TouchableOpacity>
+
             </View>
 
-                <Text style={styles.title}>Today is a great day</Text>
+            {/**
+                * *Aquí esta el titulo que no va encerrado en ningún View
+             */}
+
+                {/* <Text style={styles.title}>{post[id - 1].title}</Text> */}
+
+                {/* /**
+                    * *Aquí va el Body
+                 */ }
                     <View style={styles.containerBody} >
-                        <Text style={styles.body} numberOfLines={6} >Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                        {/* <Text style={styles.body} numberOfLines={6} >{post[id - 1].body}</Text> */}
                         <TouchableOpacity onPress={() => changeText} >
                             <Text style={{color: 'grey'}} >Ver más</Text>
                         </TouchableOpacity>        
                     </View>
 
+                    {/**
+                        * * Aquí tenemos el contenedor de la imagen
+                     */}
+ 
                     <View style={styles.containerImages} >
-                        <Image style={styles.imagePublish} source={{uri: 'https://media.traveler.es/photos/61376371d4923f67e298e32a/master/w_1600%2Cc_limit/190171.jpg'}} />
+                        <Image style={styles.imagePublish} source={{uri: photos[id].url}} defaultSource={require('../assets/default.jpg')} loadingIndicatorSource={true} />
                     </View>
         </View>
     </View>
@@ -47,6 +68,7 @@ export default Publicaciones
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // backgroundColor: '#FFF'
     },
     header:{
         // flex: 1,
@@ -57,9 +79,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     containerPublish: {
+        // flex: 1,
         marginHorizontal: 10,
         marginTop: 10,
-        maxHeight: '45%'
+        // height: '80%',
+        // backgroundColor: '#ccc'
     }, 
     perfilPhoto: {
         width: 50,
@@ -72,7 +96,7 @@ const styles = StyleSheet.create({
     },
     imagePublish: {
         width: '100%',
-        height: '100%'
+        height: 300
     },
     userName: {
         fontSize: 22,
@@ -83,6 +107,10 @@ const styles = StyleSheet.create({
         color: '#ccc222'
     },
     containerImages: {
-        // backgroundColor: 'blue'
+        // backgroundColor: 'blue',
+        // padding: 10
+    },
+    body: {
+        // color: '#FFFFFF'
     }
 })

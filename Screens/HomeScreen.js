@@ -25,15 +25,17 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const fetchImagesProfiles = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/photos/1');
+      const response = await fetch('https://jsonplaceholder.typicode.com/albums/1/photos');
       const data = await response.json();
-      setImages(data);
+      setImages(data.splice(0, 10));
     }
 
     useEffect(() => {
         fetchingUsers();
         fetchImagesProfiles();
     }, [])
+
+    // console.log(images);
 
   return (
     <User user={users} image={images} navigation={navigation} />
