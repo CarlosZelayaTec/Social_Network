@@ -2,9 +2,18 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, {useState, useEffect} from 'react';
 import User from '../Components/Users';
 
-const HomeScreen = ({ navigation }) => {
+/**
+ * 
+ * * Para poder concatenar en un estado un elemento podemos utilizar la siguiente opción
+ * ! let Arreglo = [ nuevoElemento, ...Arreglo ]
+ * ! setArreglo([nuevoElemento, ...Arreglo])
+ * 
+ * ? Es importante tener en cuenta este tipo de ayuda, ya que el useState no nos agrega a un arreglo un nuevo elemento
+ * ? solo lo actualiza, con este método podemos hacer que se vayan guardando los nuevos elementos que vayamos agregando  
+ *  
+ */
 
-  // console.log(navigation);
+const HomeScreen = ({ navigation }) => {
 
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
