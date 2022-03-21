@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import ListUser from './ListUser'
 
@@ -16,7 +16,6 @@ const Users = ({ user, navigation }) => {
     fetchImagesProfiles();
   }, [])
 
-  // console.log(image);
 
   return (
     <View style={styles.container}>

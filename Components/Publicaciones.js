@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
 const Publicaciones = ({ post, nameUser, id, photos }) => {
@@ -13,8 +13,6 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
      * TODO Faltaría agregar las imagenes de cada uno de nuestros usuarios
      * TODO Faltaría desarrollar una función que permita que veamos los post de todos los usuarios, ya que un usuario tiene varios Post
      */
-
-    console.log(post[id - 1]);
 
 
   return (

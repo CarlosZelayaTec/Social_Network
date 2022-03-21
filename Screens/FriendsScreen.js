@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React, {useState, useEffect} from 'react';
 import User from '../Components/Users';
 
@@ -13,10 +12,9 @@ import User from '../Components/Users';
  *  
  */
 
-const HomeScreen = ({ navigation }) => {
+const FriendsScreen = ({ navigation }) => {
 
   const [users, setUsers] = useState([]);
-  
   
     const fetchingUsers = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -24,25 +22,13 @@ const HomeScreen = ({ navigation }) => {
         setUsers(data)
     }
 
-    
     useEffect(() => {
         fetchingUsers();
     }, [])
-
-    // console.log(images);
 
   return (
     <User user={users}  navigation={navigation} />
   )
 }
 
-export default HomeScreen;
-
-const styles = StyleSheet.create({
-    container: {
-         flex: 1,
-         justifyContent: 'center', 
-         alignItems: 'center'
-    },
-    
-})
+export default FriendsScreen;

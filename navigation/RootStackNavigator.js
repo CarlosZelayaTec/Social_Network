@@ -1,27 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
     ProfileScreen,
-    HomeScreen,
+    FriendsScreen,
     SettingsScreen,
     PublisherScreen
 } from '../Screens/index'
 
-const HomeStack = createNativeStackNavigator();
+const FriendStack = createNativeStackNavigator();
 const PublisherStack = createNativeStackNavigator();
 const SettingStack = createNativeStackNavigator();
 
- export function HomeStackScreen (){
+ export function FriendStackScreen (){
   return (
-      <HomeStack.Navigator
+      <FriendStack.Navigator
         screenOptions={{
             headerShown: false
         }}
       >
-          <HomeStack.Screen name='Principal' component={HomeScreen} />
-          <HomeStack.Screen name='Profile' component={ProfileScreen} />
-      </HomeStack.Navigator>
+          <FriendStack.Screen name='Principal' component={FriendsScreen} />
+          <FriendStack.Screen name='Profile' component={ProfileScreen} />
+      </FriendStack.Navigator>
   )
 }
 
@@ -48,5 +47,3 @@ export function PublisherStackScreen() {
         </PublisherStack.Navigator>
     )
 }
-
-const styles = StyleSheet.create({})

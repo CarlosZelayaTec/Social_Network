@@ -39,8 +39,6 @@ const PublisherScreen = () => {
     fetchUser();
   }, [])
 
-  // console.log(post);
-
   return (
       <>
     { ready === false ? 

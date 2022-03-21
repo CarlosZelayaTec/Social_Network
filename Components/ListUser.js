@@ -7,8 +7,6 @@ const ListUser = ({ name, imagesEnd, navigation, id }) => {
         navigation.navigate('Profile')
     }
 
-    console.log(id);
-
   return (
     <View style={styles.contain}>
         <TouchableOpacity style={styles.containerUser} onPress={next}>

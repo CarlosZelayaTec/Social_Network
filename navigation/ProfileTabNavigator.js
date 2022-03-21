@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
-    HomeStackScreen,
+    FriendStackScreen,
     PublisherStackScreen,
     SettingStackScreen
   } from './RootStackNavigator';
@@ -40,7 +40,7 @@ const ProfileTabNavigator = () => {
         })}
       >
         <Tab.Screen name="Publisher" component={PublisherStackScreen} options={{ tabBarBadge: 45, headerTitle: 'Publicaciones' }} />
-        <Tab.Screen name="Amigos" component={HomeStackScreen} options={{ tabBarBadge: 10, headerTitle: 'Amigos' }} />
+        <Tab.Screen name="Amigos" component={FriendStackScreen} options={{ tabBarBadge: 10, headerTitle: 'Amigos' }} />
         <Tab.Screen name="Settings" component={SettingStackScreen} />
       </Tab.Navigator>
     );
