@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
 import React from 'react'
 
-const ListUser = ({ usersName, imagesEnd, navigation, id }) => {
+const ListUser = ({ name, imagesEnd, navigation, id }) => {
 
     const next = () => {
-        navigation.navigate('Profile');
+        navigation.navigate('Profile')
     }
 
     console.log(id);
@@ -12,8 +12,8 @@ const ListUser = ({ usersName, imagesEnd, navigation, id }) => {
   return (
     <View style={styles.contain}>
         <TouchableOpacity style={styles.containerUser} onPress={next}>
-            <Image source={{uri: imagesEnd[id - 1].url}} style={styles.profilePhoto} defaultSource={require('../assets/default.jpg')}/>
-            <Text>{usersName}</Text>
+            <Image source={{uri: imagesEnd[id - 1].url}} style={styles.profilePhoto} defaultSource={require('../assets/default.jpg')} loadingIndicatorSource={true}/>
+            <Text>{name}</Text>
         </TouchableOpacity>
     </View>
   )

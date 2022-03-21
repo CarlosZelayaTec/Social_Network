@@ -2,7 +2,19 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import ListUser from './ListUser'
 
-const Users = ({ user, image, navigation }) => {
+const Users = ({ user, navigation }) => {
+
+  const [images, setImages] = useState([]);
+
+  const fetchImagesProfiles = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/albums/1/photos');
+    const data = await response.json();
+    setImages(data.splice(0, 10));
+  }
+
+  useEffect(() => {
+    fetchImagesProfiles();
+  }, [])
 
   // console.log(image);
 
@@ -12,7 +24,7 @@ const Users = ({ user, image, navigation }) => {
         data={user}
         keyExtractor={x => x.id}
         numColumns={2}
-        renderItem={({item}) => <ListUser id={item.id} usersName={item.username} imagesEnd={image} navigation={navigation} /> }
+        renderItem={({item}) => <ListUser id={item.id} name={item.name} imagesEnd={images} navigation={navigation} /> }
       />
     </View>
   )

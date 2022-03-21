@@ -40,7 +40,7 @@ const ProfileTabNavigator = () => {
         })}
       >
         <Tab.Screen name="Publisher" component={PublisherStackScreen} options={{ tabBarBadge: 45, headerTitle: 'Publicaciones' }} />
-        <Tab.Screen name="Amigos" component={HomeStackScreen} options={{ tabBarBadge: 10, headerTitle: 'Social Network' }} />
+        <Tab.Screen name="Amigos" component={HomeStackScreen} options={{ tabBarBadge: 10, headerTitle: 'Amigos' }} />
         <Tab.Screen name="Settings" component={SettingStackScreen} />
       </Tab.Navigator>
     );

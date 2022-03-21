@@ -16,7 +16,7 @@ import User from '../Components/Users';
 const HomeScreen = ({ navigation }) => {
 
   const [users, setUsers] = useState([]);
-  const [images, setImages] = useState([]);
+  
   
     const fetchingUsers = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -24,21 +24,15 @@ const HomeScreen = ({ navigation }) => {
         setUsers(data)
     }
 
-    const fetchImagesProfiles = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/albums/1/photos');
-      const data = await response.json();
-      setImages(data.splice(0, 10));
-    }
-
+    
     useEffect(() => {
         fetchingUsers();
-        fetchImagesProfiles();
     }, [])
 
     // console.log(images);
 
   return (
-    <User user={users} image={images} navigation={navigation} />
+    <User user={users}  navigation={navigation} />
   )
 }
 

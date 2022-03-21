@@ -14,7 +14,7 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
      * TODO Faltaría desarrollar una función que permita que veamos los post de todos los usuarios, ya que un usuario tiene varios Post
      */
 
-    // console.log(nameUser);
+    console.log(post[id - 1]);
 
 
   return (
@@ -39,13 +39,17 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
                 * *Aquí esta el titulo que no va encerrado en ningún View
              */}
 
-                {/* <Text style={styles.title}>{post[id - 1].title}</Text> */}
+                <Text style={styles.title}>{
+                post[id - 1].title === undefined ? `Aqui va el título del Post` : post[id - 1].title 
+                }</Text>
 
-                {/* /**
+                {/* 
                     * *Aquí va el Body
                  */ }
                     <View style={styles.containerBody} >
-                        {/* <Text style={styles.body} numberOfLines={6} >{post[id - 1].body}</Text> */}
+                        <Text style={styles.body} numberOfLines={6} >{
+                             post[id - 1].body === undefined ? `Aqui va el cuerpo del Post` : post[id - 1].body
+                        }</Text>
                         <TouchableOpacity onPress={() => changeText} >
                             <Text style={{color: 'grey'}} >Ver más</Text>
                         </TouchableOpacity>        
