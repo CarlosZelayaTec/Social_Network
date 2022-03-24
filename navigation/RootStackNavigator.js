@@ -18,7 +18,7 @@ const SettingStack = createNativeStackNavigator();
             headerShown: false
         }}
       >
-          <FriendStack.Screen name='Principal' component={FriendsScreen} />
+          <FriendStack.Screen name='Friends' component={FriendsScreen} />
           <FriendStack.Screen name='Profile' component={ProfileScreen} />
       </FriendStack.Navigator>
   )

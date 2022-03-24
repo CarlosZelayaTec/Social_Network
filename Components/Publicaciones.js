@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
-const Publicaciones = ({ post, nameUser, id, photos }) => {
+const Publicaciones = ({ post, nameUser, id }) => {
 
     /**
      * * Esta es el componente de cada una de las publicaciones que haga un usuario
@@ -14,6 +14,8 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
      * TODO Faltaría desarrollar una función que permita que veamos los post de todos los usuarios, ya que un usuario tiene varios Post
      */
 
+
+    // console.log(post[id - 1].title)
 
   return (
     <View style={styles.container} >
@@ -38,7 +40,7 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
              */}
 
                 <Text style={styles.title}>{
-                post[id - 1].title === undefined ? `Aqui va el título del Post` : post[id - 1].title 
+                post[id - 1].title === "" ? `Aqui va el título del Post` : post[id - 1].title 
                 }</Text>
 
                 {/* 
@@ -46,7 +48,7 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
                  */ }
                     <View style={styles.containerBody} >
                         <Text style={styles.body} numberOfLines={6} >{
-                             post[id - 1].body === undefined ? `Aqui va el cuerpo del Post` : post[id - 1].body
+                             post.body === undefined ? `Aqui va el cuerpo del Post` : post[id - 1].body
                         }</Text>
                         <TouchableOpacity onPress={() => changeText} >
                             <Text style={{color: 'grey'}} >Ver más</Text>
@@ -58,7 +60,7 @@ const Publicaciones = ({ post, nameUser, id, photos }) => {
                      */}
  
                     <View style={styles.containerImages} >
-                        <Image style={styles.imagePublish} source={{uri: photos[id].url}} defaultSource={require('../assets/default.jpg')} loadingIndicatorSource={true} />
+                        <Image style={styles.imagePublish} source={require('../assets/default.jpg')} loadingIndicatorSource={{uri: 'https://www.kananss.com/wp-content/uploads/2021/06/51-519068_loader-loading-progress-wait-icon-loading-icon-png-1.png'}} />
                     </View>
         </View>
     </View>

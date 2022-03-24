@@ -10,7 +10,7 @@ const ListUser = ({ name, imagesEnd, navigation, id }) => {
   return (
     <View style={styles.contain}>
         <TouchableOpacity style={styles.containerUser} onPress={next}>
-            <Image source={{uri: imagesEnd[id - 1].url}} style={styles.profilePhoto} defaultSource={require('../assets/default.jpg')} loadingIndicatorSource={true}/>
+            <Image source={require('../assets/default-user.png')} style={styles.profilePhoto} loadingIndicatorSource={{uri: 'https://www.kananss.com/wp-content/uploads/2021/06/51-519068_loader-loading-progress-wait-icon-loading-icon-png-1.png'}}/>
             <Text>{name}</Text>
         </TouchableOpacity>
     </View>
