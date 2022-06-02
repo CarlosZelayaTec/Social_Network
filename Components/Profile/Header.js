@@ -7,6 +7,7 @@ const Header = () => {
       <View style={styles.container} >
         <Image style={styles.photoPerfil} source={require('../../assets/default-user.png')} loadingIndicatorSource={true} />
         <Text style={styles.nameProfile}>Nombre del usuario</Text>
+        <Text style={styles.informacion}>Aqui va la informacion</Text>
       </View>
     </View>
   )

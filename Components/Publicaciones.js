@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 
-const Publicaciones = ({ post, nameUser, id }) => {
+const Publicaciones = ({ post, nameUser, id, navigation }) => {
 
     /**
      * * Esta es el componente de cada una de las publicaciones que haga un usuario
@@ -14,10 +14,10 @@ const Publicaciones = ({ post, nameUser, id }) => {
      * TODO Faltaría desarrollar una función que permita que veamos los post de todos los usuarios, ya que un usuario tiene varios Post
      */
 
+    const [ showText, setShowText ] = useState(2);
+    
 
-    // console.log(post[id - 1].title)
-
-  return (
+    return (
     <View style={styles.container} >
         <View style={styles.containerPublish} >
         {/**
@@ -25,8 +25,9 @@ const Publicaciones = ({ post, nameUser, id }) => {
          */}
             <View style={styles.header} >
 
-                <Image style={styles.perfilPhoto} source={{uri: 'https://images.ecestaticos.com/XBt9G5umGpid8S2dgQk2G5jGUow=/119x0:2001x1412/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F848%2Ff70%2F0d5%2F848f700d5a15920f020496a616af873a.jpg'}} />
-                    
+                <TouchableOpacity onPress={() => navigation.navigate('profileStack') } >     
+                    <Image style={styles.perfilPhoto} source={{uri: 'https://images.ecestaticos.com/XBt9G5umGpid8S2dgQk2G5jGUow=/119x0:2001x1412/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F848%2Ff70%2F0d5%2F848f700d5a15920f020496a616af873a.jpg'}} />
+                </TouchableOpacity>    
                     <Text style={styles.userName} >{nameUser}</Text>
 
                         <TouchableOpacity onPress={() => alert('Falta hacer el menú')}>
@@ -40,17 +41,17 @@ const Publicaciones = ({ post, nameUser, id }) => {
              */}
 
                 <Text style={styles.title}>{
-                post[id - 1].title === "" ? `Aqui va el título del Post` : post[id - 1].title 
+                post[id - 1].title === undefined ? `Aqui va el título del Post` : post[id - 1].title 
                 }</Text>
 
                 {/* 
                     * *Aquí va el Body
                  */ }
                     <View style={styles.containerBody} >
-                        <Text style={styles.body} numberOfLines={6} >{
-                             post.body === undefined ? `Aqui va el cuerpo del Post` : post[id - 1].body
+                        <Text style={styles.body} numberOfLines={showText} >{
+                             post[id - 1].body === undefined ? `Aqui va el cuerpo del Post` : post[id - 1].body
                         }</Text>
-                        <TouchableOpacity onPress={() => changeText} >
+                        <TouchableOpacity onPress={() => setShowText(10)} >
                             <Text style={{color: 'grey'}} >Ver más</Text>
                         </TouchableOpacity>        
                     </View>

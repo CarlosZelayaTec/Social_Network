@@ -1,14 +1,13 @@
-import { StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { StyleSheet, FlatList, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Publicaciones from '../Components/Publicaciones';
 import Stories from '../Components/Stories/Stories';
 
-const PublisherScreen = () => {
+const PublisherScreen = ({ navigation }) => {
 
   const [ post, setPost ] = useState([]);
   const [ user, setUser ] = useState([]);
   const [ ready, setReady ] = useState(false);
-  // const [all, setAll] = useState([]);
 
   /**
    * TODO Necesitamos Refactorizar este código, con un Promise All
@@ -16,20 +15,33 @@ const PublisherScreen = () => {
    */
   
   async function fetchUser () {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    const data = await response.json();
-    setUser(data);
-    // setAll(data);
+    try{
+      const userUrl = 'https://jsonplaceholder.typicode.com/users';
+        const response = await fetch(userUrl);
+
+          if(response.status !== 200) throw "Error...";        
+
+        const data = await response.json();
+          setUser(data);
+    }catch(error) {
+      console.log(error);
+    }
   }
   
   async function fetchPost () {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users/1/posts')
-    const data = await response.json();
-    setPost(data);
-    // setAll([...all, data]);
-    setReady(true)
-  }
+    try{
+      const postUrl = 'https://jsonplaceholder.typicode.com/users/1/posts';
+        const response = await fetch(postUrl);
 
+          if(response.status !== 200) throw "Error...";
+
+        const data = await response.json();
+          setPost(data);
+          setReady(true)
+    }catch(error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     fetchPost();
@@ -44,11 +56,11 @@ const PublisherScreen = () => {
       </>
       :
       <>
-      <Stories />
       <FlatList 
           data={user}
           keyExtractor={x => x.id}
-          renderItem={({item}) => <Publicaciones id={item.id} nameUser={item.username} post={post} />}
+          ListHeaderComponent={()=> <Stories /> }
+          renderItem={({item}) => <Publicaciones id={item.id} nameUser={item.username} post={post} navigation={navigation} />}
         />
       </>
     }

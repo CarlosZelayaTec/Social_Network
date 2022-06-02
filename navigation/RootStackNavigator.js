@@ -44,6 +44,7 @@ export function PublisherStackScreen() {
             }}
         >
             <PublisherStack.Screen name='PublisherStack' component={PublisherScreen} />
+            <PublisherStack.Screen name='profileStack' component={ProfileScreen} />
         </PublisherStack.Navigator>
     )
 }

@@ -5,12 +5,12 @@ const UserStory = ({ userName, ok }) => {
 
   return (
     <View style={styles.container} >
-                <TouchableOpacity style={styles.containerStory} onPress={ok} >
-                    <View style={styles.circleBlack} >  
-                        <Image style={styles.photosStory} source={require('../../assets/default-user.png')}  loadingIndicatorSource={{uri: 'https://www.kananss.com/wp-content/uploads/2021/06/51-519068_loader-loading-progress-wait-icon-loading-icon-png-1.png'}} />
-                    </View>
-                        <Text style={styles.userNameStyle} >{userName.slice(0, 9)}</Text>
-                </TouchableOpacity>
+        <TouchableOpacity style={styles.containerStory} onPress={ok} >
+            <View style={styles.circleBlack} >  
+                <Image style={styles.photosStory} source={require('../../assets/default-user.png')}  loadingIndicatorSource={{uri: 'https://www.kananss.com/wp-content/uploads/2021/06/51-519068_loader-loading-progress-wait-icon-loading-icon-png-1.png'}} />
+            </View>
+                <Text style={styles.userNameStyle} >{userName.slice(0, 9)}</Text>
+        </TouchableOpacity>
     </View>
   )
 }
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         borderRadius: 30
     },
     containerStory: {
-        marginHorizontal: 5,
+        marginHorizontal: 8,
         alignItems: 'center',
         // backgroundColor: 'red',
         flex: 1,
